@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+    background: #f5f5f5;
+    color: #000;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: #fff;
+    padding: 1rem; 
+    border-radius: 0.5rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+input {
+    width: 70%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.primary-btn {
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+ul {
+    padding: 0;
+    margin-top: 1rem;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    background: #eee;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s, color 0.3s;
+}
+
+li > input[type="checkbox"] {
+    width: 2rem;
+    flex-shrink: 0;
+}
+
+li > span {
+    flex: 1;
+    margin: 0 0.5rem;
+    word-break: break-word;
+}
+
+li > button {
+    width: 4rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.25rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+button.edit {
+    background: #ffc107;
+    color: #000;
+}
+
+button.delete {
+    background: #dc3545;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 300px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.modal-footer {
+    text-align: right;
+    margin-top: 0.5rem;
+}
+
+.modal-footer > button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel {
+    background: #6c757d;
+    color: #fff;
+}
+
+.save {
+    background: #007bff;
+    color: #fff;
+}
+

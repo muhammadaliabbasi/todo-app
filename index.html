@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body> 
+    <div class="container">
+        <h2>📝To-Do App</h2>
+        <input type="text" id="taskInput" placeholder="Add new task">
+        <button id="addBtn" class="primary-btn">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div>Edit Task</div>
+            <input type="text" id="editInput">
+            <div class="modal-footer">
+                <button class="cancel" id="cancelBtn">Cancel</button>
+                <button class="save" id="saveBtn">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
