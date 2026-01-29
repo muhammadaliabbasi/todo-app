@@ -1,50 +1,46 @@
-let taskToEdit = null;
+$(document).ready(function() {
+    let taskToEdit = null;
+    const editModal = new bootstrap.Modal($('#editModal')[0]);
 
-document.getElementById("addBtn").onclick = function () {
-    let input = document.getElementById("taskInput");
-    if (input.value === "") { return };
-    let li = document.createElement("li");
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.onchange = function () {
-        if (checkbox.checked) {
-            span.style.textDecoration = "line-through";
-        } else {
-            span.style.textDecoration = "none";
+    // Add Task
+    $('#addBtn').click(function() {
+        let task = $('#taskInput').val().trim();
+        if (task === "") return;
+
+        let li = $('<li class="list-group-item d-flex align-items-center justify-content-between"></li>');
+        let checkbox = $('<input type="checkbox" class="form-check-input me-2">');
+        let span = $('<span class="flex-grow-1"></span>').text(task);
+
+        // Checkbox toggle completed
+        checkbox.change(function() {
+            span.toggleClass('completed');
+        });
+
+        // Edit button
+        let editBtn = $('<button class="btn btn-warning btn-sm me-2">Edit</button>').click(function() {
+            taskToEdit = span;
+            $('#editInput').val(span.text());
+            editModal.show();
+        });
+
+        // Delete button
+        let delBtn = $('<button class="btn btn-danger btn-sm">Delete</button>').click(function() {
+            li.remove();
+        });
+
+        li.append(checkbox, span, editBtn, delBtn);
+        $('#taskList').append(li);
+        $('#taskInput').val('');
+    });
+
+    // Save Edited Task
+    $('#saveBtn').click(function() {
+        if (taskToEdit) {
+            let newValue = $('#editInput').val().trim();
+            if(newValue !== "") {
+                taskToEdit.text(newValue);
+            }
+            editModal.hide();
         }
-    };
-    let span = document.createElement("span");
-    span.innerText = input.value;
-    let editBtn = document.createElement("button");
-    editBtn.innerText = "Edit";
-    editBtn.onclick = function () {
-        taskToEdit = span;
-        document.getElementById("editInput").value = span.innerText;
-        document.getElementById("editModal").style.display = "flex";
-    }
-    editBtn.style.padding="7px";
-    editBtn.style.marginRight="2px";
-    let delBtn = document.createElement("button");
-    delBtn.innerText = "Delete";
-    delBtn.style.padding="7px";
-    delBtn.style.marginLeft="2px";
-    delBtn.onclick = function () { li.remove(); }
-    li.appendChild(checkbox);
-    li.appendChild(span);
-    li.appendChild(editBtn);
-    li.appendChild(delBtn);
-    document.getElementById("taskList").appendChild(li);
-    input.value = "";
-}
-
-document.getElementById("cancelBtn").onclick = function () {
-    document.getElementById("editModal").style.display = "none";
-}
- 
-document.getElementById("saveBtn").onclick = function () {
-    if (taskToEdit) {
-        taskToEdit.innerText = document.getElementById("editInput").value;
-        document.getElementById("editModal").style.display = "none";
-    }
-}
-
+    });
+});
